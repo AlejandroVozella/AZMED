@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71147a22622247c093bce6042d1f1288" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="AzMedModel.Especialidad" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.EstadoOC" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.Facturas" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.modulo" Width="1.5" PointX="5.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.ObraSocial" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.operaciones" Width="1.5" PointX="7.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.Pacientes" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.Plan" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.Profesionales" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.Proveedor" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.rol" Width="1.5" PointX="7.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.rol_operacion" Width="1.5" PointX="10" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.Turnos" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AzMedModel.usuario" Width="1.5" PointX="10" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="AzMedModel.FK_Profesionales_Especialidad" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_Facturas_Pacientes" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_operaciones_modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_Plan_ObraSocial" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_rol_operacion_operaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_Paciente_Plan" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_Turnos_Plan" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_Turnos_Profesionales" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_rol_operacion_rol" ManuallyRouted="false" />
+        <AssociationConnector Association="AzMedModel.FK_usuario_rol" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AzMedModel.DetalleSolp" Width="1.5" PointX="16.875" PointY="5.875" />
+        <EntityTypeShape EntityType="AzMedModel.EstadoSolp" Width="1.5" PointX="12.375" PointY="6.25" />
+        <EntityTypeShape EntityType="AzMedModel.Material" Width="1.5" PointX="14.625" PointY="3.125" />
+        <EntityTypeShape EntityType="AzMedModel.Solped" Width="1.5" PointX="14.625" PointY="6" />
+        <AssociationConnector Association="AzMedModel.FK_DetalleSolp_DetalleSolp" />
+        <AssociationConnector Association="AzMedModel.FK_DetalleSolp_Material" />
+        <AssociationConnector Association="AzMedModel.FK_Solped_EstadoSolp" />
+        <EntityTypeShape EntityType="AzMedModel.DetalleOC" Width="1.5" PointX="16.875" PointY="2.25" />
+        <EntityTypeShape EntityType="AzMedModel.OrdenesCompras" Width="1.5" PointX="14" PointY="0.5" />
+        <AssociationConnector Association="AzMedModel.FK_DetalleOC_Material" />
+        <AssociationConnector Association="AzMedModel.FK_DetalleOC_OrdenesCompras" />
+        <AssociationConnector Association="AzMedModel.FK_OrdenesCompras_EstadoOC" />
+        <AssociationConnector Association="AzMedModel.FK_OrdenesCompras_Proveedor" />
+        <EntityTypeShape EntityType="AzMedModel.Cotizaciones" Width="1.5" PointX="13" PointY="8.5" />
+        <AssociationConnector Association="AzMedModel.FK_Cotizaciones_Cotizaciones" />
+        <AssociationConnector Association="AzMedModel.FK_Cotizaciones_Proveedor" />
+        <EntityTypeShape EntityType="AzMedModel.Estudios" Width="1.5" PointX="1.75" PointY="16.375" />
+        <EntityTypeShape EntityType="AzMedModel.TurnosEstudios" Width="1.5" PointX="4" PointY="0.5" />
+        <AssociationConnector Association="AzMedModel.FK_TurnosEstudios_Estudios" />
+        <AssociationConnector Association="AzMedModel.FK_TurnosEstudios_Pacientes" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

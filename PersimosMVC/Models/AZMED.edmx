@@ -1,0 +1,1446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AzMedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cotizaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="Precio Unitario" Type="int" />
+          <Property Name="Proveedor" Type="int" />
+          <Property Name="Solp" Type="int" />
+        </EntityType>
+        <EntityType Name="DetalleOC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Material" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Numero OC" Type="int" />
+        </EntityType>
+        <EntityType Name="DetalleSolp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Solped" Type="int" />
+          <Property Name="Material" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EstadoOC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EstadoSolp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Estudios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Monto" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Paciente" Type="int" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ObraSocial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cuil" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="idModulo" Type="int" />
+        </EntityType>
+        <EntityType Name="OrdenesCompras">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Proveedor" Type="int" />
+          <Property Name="Estado" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Paciente" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="DNI" Type="nvarchar" MaxLength="50" />
+          <Property Name="idPlan" Type="int" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="TipoPlan" Type="nvarchar" MaxLength="50" />
+          <Property Name="idObraSocial" Type="int" />
+        </EntityType>
+        <EntityType Name="Profesionales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Profesional" Type="nvarchar" MaxLength="50" />
+          <Property Name="Matricula" Type="int" />
+          <Property Name="idEspecialidad" Type="int" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cuil" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" />
+          <Property Name="idOperacion" Type="int" />
+        </EntityType>
+        <EntityType Name="Solped">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Estado" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Turnos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdPaciente" Type="int" />
+          <Property Name="idProfesional" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TurnosEstudios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo Estudios" Type="int" />
+          <Property Name="Paciente" Type="int" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="200" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="idRol" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cotizaciones_Cotizaciones">
+          <End Role="Solped" Type="Self.Solped" Multiplicity="0..1" />
+          <End Role="Cotizaciones" Type="Self.Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Solped">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cotizaciones">
+              <PropertyRef Name="Solp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizaciones_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Cotizaciones" Type="Self.Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cotizaciones">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleOC_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="DetalleOC" Type="Self.DetalleOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleOC">
+              <PropertyRef Name="Material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleOC_OrdenesCompras">
+          <End Role="OrdenesCompras" Type="Self.OrdenesCompras" Multiplicity="0..1" />
+          <End Role="DetalleOC" Type="Self.DetalleOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenesCompras">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleOC">
+              <PropertyRef Name="Numero OC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleSolp_DetalleSolp">
+          <End Role="Solped" Type="Self.Solped" Multiplicity="0..1" />
+          <End Role="DetalleSolp" Type="Self.DetalleSolp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Solped">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleSolp">
+              <PropertyRef Name="Solped" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleSolp_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="DetalleSolp" Type="Self.DetalleSolp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleSolp">
+              <PropertyRef Name="Material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_operaciones_modulo">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="0..1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesCompras_EstadoOC">
+          <End Role="EstadoOC" Type="Self.EstadoOC" Multiplicity="0..1" />
+          <End Role="OrdenesCompras" Type="Self.OrdenesCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoOC">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrdenesCompras">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesCompras_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="OrdenesCompras" Type="Self.OrdenesCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrdenesCompras">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="0..1" />
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pacientes">
+              <PropertyRef Name="idPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plan_ObraSocial">
+          <End Role="ObraSocial" Type="Self.ObraSocial" Multiplicity="0..1" />
+          <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObraSocial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plan">
+              <PropertyRef Name="idObraSocial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profesionales_Especialidad">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+          <End Role="Profesionales" Type="Self.Profesionales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profesionales">
+              <PropertyRef Name="idEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_operaciones">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idOperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solped_EstadoSolp">
+          <End Role="EstadoSolp" Type="Self.EstadoSolp" Multiplicity="0..1" />
+          <End Role="Solped" Type="Self.Solped" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSolp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Solped">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_Plan">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Turnos">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_Profesionales">
+          <End Role="Profesionales" Type="Self.Profesionales" Multiplicity="0..1" />
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesionales">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Turnos">
+              <PropertyRef Name="idProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TurnosEstudios_Estudios">
+          <End Role="Estudios" Type="Self.Estudios" Multiplicity="0..1" />
+          <End Role="TurnosEstudios" Type="Self.TurnosEstudios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TurnosEstudios">
+              <PropertyRef Name="Tipo Estudios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TurnosEstudios_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="TurnosEstudios" Type="Self.TurnosEstudios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TurnosEstudios">
+              <PropertyRef Name="Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AzMedModelStoreContainer">
+          <EntitySet Name="Cotizaciones" EntityType="Self.Cotizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleOC" EntityType="Self.DetalleOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleSolp" EntityType="Self.DetalleSolp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoOC" EntityType="Self.EstadoOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoSolp" EntityType="Self.EstadoSolp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudios" EntityType="Self.Estudios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObraSocial" EntityType="Self.ObraSocial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdenesCompras" EntityType="Self.OrdenesCompras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesionales" EntityType="Self.Profesionales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol" EntityType="Self.rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Solped" EntityType="Self.Solped" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TurnosEstudios" EntityType="Self.TurnosEstudios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cotizaciones_Cotizaciones" Association="Self.FK_Cotizaciones_Cotizaciones">
+            <End Role="Solped" EntitySet="Solped" />
+            <End Role="Cotizaciones" EntitySet="Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizaciones_Proveedor" Association="Self.FK_Cotizaciones_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Cotizaciones" EntitySet="Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleOC_Material" Association="Self.FK_DetalleOC_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="DetalleOC" EntitySet="DetalleOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleOC_OrdenesCompras" Association="Self.FK_DetalleOC_OrdenesCompras">
+            <End Role="OrdenesCompras" EntitySet="OrdenesCompras" />
+            <End Role="DetalleOC" EntitySet="DetalleOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleSolp_DetalleSolp" Association="Self.FK_DetalleSolp_DetalleSolp">
+            <End Role="Solped" EntitySet="Solped" />
+            <End Role="DetalleSolp" EntitySet="DetalleSolp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleSolp_Material" Association="Self.FK_DetalleSolp_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="DetalleSolp" EntitySet="DetalleSolp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Pacientes" Association="Self.FK_Facturas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_operaciones_modulo" Association="Self.FK_operaciones_modulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesCompras_EstadoOC" Association="Self.FK_OrdenesCompras_EstadoOC">
+            <End Role="EstadoOC" EntitySet="EstadoOC" />
+            <End Role="OrdenesCompras" EntitySet="OrdenesCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesCompras_Proveedor" Association="Self.FK_OrdenesCompras_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="OrdenesCompras" EntitySet="OrdenesCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_Plan" Association="Self.FK_Paciente_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Pacientes" EntitySet="Pacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plan_ObraSocial" Association="Self.FK_Plan_ObraSocial">
+            <End Role="ObraSocial" EntitySet="ObraSocial" />
+            <End Role="Plan" EntitySet="Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profesionales_Especialidad" Association="Self.FK_Profesionales_Especialidad">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Profesionales" EntitySet="Profesionales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_operaciones" Association="Self.FK_rol_operacion_operaciones">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_rol" Association="Self.FK_rol_operacion_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solped_EstadoSolp" Association="Self.FK_Solped_EstadoSolp">
+            <End Role="EstadoSolp" EntitySet="EstadoSolp" />
+            <End Role="Solped" EntitySet="Solped" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_Plan" Association="Self.FK_Turnos_Plan">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Turnos" EntitySet="Turnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_Profesionales" Association="Self.FK_Turnos_Profesionales">
+            <End Role="Profesionales" EntitySet="Profesionales" />
+            <End Role="Turnos" EntitySet="Turnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TurnosEstudios_Estudios" Association="Self.FK_TurnosEstudios_Estudios">
+            <End Role="Estudios" EntitySet="Estudios" />
+            <End Role="TurnosEstudios" EntitySet="TurnosEstudios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TurnosEstudios_Pacientes" Association="Self.FK_TurnosEstudios_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="TurnosEstudios" EntitySet="TurnosEstudios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AzMedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Profesionales" Relationship="Self.FK_Profesionales_Especialidad" FromRole="Especialidad" ToRole="Profesionales" />
+        </EntityType>
+        <EntityType Name="EstadoOC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrdenesCompras" Relationship="AzMedModel.FK_OrdenesCompras_EstadoOC" FromRole="EstadoOC" ToRole="OrdenesCompras" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Paciente" Type="Int32" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK_Facturas_Pacientes" FromRole="Facturas" ToRole="Pacientes" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="operaciones" Relationship="Self.FK_operaciones_modulo" FromRole="modulo" ToRole="operaciones" />
+        </EntityType>
+        <EntityType Name="ObraSocial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cuil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Plan" Relationship="Self.FK_Plan_ObraSocial" FromRole="ObraSocial" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idModulo" Type="Int32" />
+          <NavigationProperty Name="modulo" Relationship="Self.FK_operaciones_modulo" FromRole="operaciones" ToRole="modulo" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK_rol_operacion_operaciones" FromRole="operaciones" ToRole="rol_operacion" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Paciente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DNI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idPlan" Type="Int32" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Pacientes" FromRole="Pacientes" ToRole="Facturas" />
+          <NavigationProperty Name="Plan" Relationship="Self.FK_Paciente_Plan" FromRole="Pacientes" ToRole="Plan" />
+          <NavigationProperty Name="Turnos" Relationship="Self.FK_Turnos_Plan" FromRole="Pacientes" ToRole="Turnos" />
+          <NavigationProperty Name="TurnosEstudios" Relationship="AzMedModel.FK_TurnosEstudios_Pacientes" FromRole="Pacientes" ToRole="TurnosEstudios" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TipoPlan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idObraSocial" Type="Int32" />
+          <NavigationProperty Name="ObraSocial" Relationship="Self.FK_Plan_ObraSocial" FromRole="Plan" ToRole="ObraSocial" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK_Paciente_Plan" FromRole="Plan" ToRole="Pacientes" />
+        </EntityType>
+        <EntityType Name="Profesionales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Profesional" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Matricula" Type="Int32" />
+          <Property Name="idEspecialidad" Type="Int32" />
+          <NavigationProperty Name="Especialidad" Relationship="Self.FK_Profesionales_Especialidad" FromRole="Profesionales" ToRole="Especialidad" />
+          <NavigationProperty Name="Turnos" Relationship="Self.FK_Turnos_Profesionales" FromRole="Profesionales" ToRole="Turnos" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cuil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrdenesCompras" Relationship="AzMedModel.FK_OrdenesCompras_Proveedor" FromRole="Proveedor" ToRole="OrdenesCompras" />
+          <NavigationProperty Name="Cotizaciones" Relationship="AzMedModel.FK_Cotizaciones_Proveedor" FromRole="Proveedor" ToRole="Cotizaciones" />
+        </EntityType>
+        <EntityType Name="rol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK_rol_operacion_rol" FromRole="rol" ToRole="rol_operacion" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_usuario_rol" FromRole="rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="rol_operacion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" />
+          <Property Name="idOperacion" Type="Int32" />
+          <NavigationProperty Name="operaciones" Relationship="Self.FK_rol_operacion_operaciones" FromRole="rol_operacion" ToRole="operaciones" />
+          <NavigationProperty Name="rol" Relationship="Self.FK_rol_operacion_rol" FromRole="rol_operacion" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Turnos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdPaciente" Type="Int32" />
+          <Property Name="idProfesional" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Pacientes" Relationship="Self.FK_Turnos_Plan" FromRole="Turnos" ToRole="Pacientes" />
+          <NavigationProperty Name="Profesionales" Relationship="Self.FK_Turnos_Profesionales" FromRole="Turnos" ToRole="Profesionales" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="idRol" Type="Int32" />
+          <NavigationProperty Name="rol" Relationship="Self.FK_usuario_rol" FromRole="usuario" ToRole="rol" />
+        </EntityType>
+        <Association Name="FK_Profesionales_Especialidad">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+          <End Role="Profesionales" Type="Self.Profesionales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profesionales">
+              <PropertyRef Name="idEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_operaciones_modulo">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="0..1" />
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="operaciones">
+              <PropertyRef Name="idModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plan_ObraSocial">
+          <End Role="ObraSocial" Type="Self.ObraSocial" Multiplicity="0..1" />
+          <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObraSocial">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Plan">
+              <PropertyRef Name="idObraSocial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_operaciones">
+          <End Role="operaciones" Type="Self.operaciones" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="operaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idOperacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Paciente_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="0..1" />
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pacientes">
+              <PropertyRef Name="idPlan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_Plan">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="0..1" />
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Turnos">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Turnos_Profesionales">
+          <End Role="Profesionales" Type="Self.Profesionales" Multiplicity="0..1" />
+          <End Role="Turnos" Type="Self.Turnos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesionales">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Turnos">
+              <PropertyRef Name="idProfesional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rol_operacion_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="rol_operacion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario_rol">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AzMedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
+          <EntitySet Name="EstadoOC" EntityType="Self.EstadoOC" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" />
+          <EntitySet Name="ObraSocial" EntityType="Self.ObraSocial" />
+          <EntitySet Name="operaciones" EntityType="Self.operaciones" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" />
+          <EntitySet Name="Profesionales" EntityType="Self.Profesionales" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="rol" EntityType="Self.rol" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Turnos" EntityType="Self.Turnos" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK_Profesionales_Especialidad" Association="Self.FK_Profesionales_Especialidad">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Profesionales" EntitySet="Profesionales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Pacientes" Association="Self.FK_Facturas_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_operaciones_modulo" Association="Self.FK_operaciones_modulo">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operaciones" EntitySet="operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plan_ObraSocial" Association="Self.FK_Plan_ObraSocial">
+            <End Role="ObraSocial" EntitySet="ObraSocial" />
+            <End Role="Plan" EntitySet="Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_operaciones" Association="Self.FK_rol_operacion_operaciones">
+            <End Role="operaciones" EntitySet="operaciones" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Paciente_Plan" Association="Self.FK_Paciente_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Pacientes" EntitySet="Pacientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_Plan" Association="Self.FK_Turnos_Plan">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Turnos" EntitySet="Turnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Turnos_Profesionales" Association="Self.FK_Turnos_Profesionales">
+            <End Role="Profesionales" EntitySet="Profesionales" />
+            <End Role="Turnos" EntitySet="Turnos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rol_operacion_rol" Association="Self.FK_rol_operacion_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario_rol" Association="Self.FK_usuario_rol">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <EntitySet Name="DetalleSolp" EntityType="AzMedModel.DetalleSolp" />
+          <EntitySet Name="EstadoSolp" EntityType="AzMedModel.EstadoSolp" />
+          <EntitySet Name="Material" EntityType="AzMedModel.Material" />
+          <EntitySet Name="Solped" EntityType="AzMedModel.Solped" />
+          <AssociationSet Name="FK_DetalleSolp_DetalleSolp" Association="AzMedModel.FK_DetalleSolp_DetalleSolp">
+            <End Role="Solped" EntitySet="Solped" />
+            <End Role="DetalleSolp" EntitySet="DetalleSolp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleSolp_Material" Association="AzMedModel.FK_DetalleSolp_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="DetalleSolp" EntitySet="DetalleSolp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Solped_EstadoSolp" Association="AzMedModel.FK_Solped_EstadoSolp">
+            <End Role="EstadoSolp" EntitySet="EstadoSolp" />
+            <End Role="Solped" EntitySet="Solped" />
+          </AssociationSet>
+          <EntitySet Name="DetalleOC" EntityType="AzMedModel.DetalleOC" />
+          <EntitySet Name="OrdenesCompras" EntityType="AzMedModel.OrdenesCompras" />
+          <AssociationSet Name="FK_DetalleOC_Material" Association="AzMedModel.FK_DetalleOC_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="DetalleOC" EntitySet="DetalleOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleOC_OrdenesCompras" Association="AzMedModel.FK_DetalleOC_OrdenesCompras">
+            <End Role="OrdenesCompras" EntitySet="OrdenesCompras" />
+            <End Role="DetalleOC" EntitySet="DetalleOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesCompras_EstadoOC" Association="AzMedModel.FK_OrdenesCompras_EstadoOC">
+            <End Role="EstadoOC" EntitySet="EstadoOC" />
+            <End Role="OrdenesCompras" EntitySet="OrdenesCompras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenesCompras_Proveedor" Association="AzMedModel.FK_OrdenesCompras_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="OrdenesCompras" EntitySet="OrdenesCompras" />
+          </AssociationSet>
+          <EntitySet Name="Cotizaciones" EntityType="AzMedModel.Cotizaciones" />
+          <AssociationSet Name="FK_Cotizaciones_Cotizaciones" Association="AzMedModel.FK_Cotizaciones_Cotizaciones">
+            <End Role="Solped" EntitySet="Solped" />
+            <End Role="Cotizaciones" EntitySet="Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizaciones_Proveedor" Association="AzMedModel.FK_Cotizaciones_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Cotizaciones" EntitySet="Cotizaciones" />
+          </AssociationSet>
+          <EntitySet Name="Estudios" EntityType="AzMedModel.Estudios" />
+          <EntitySet Name="TurnosEstudios" EntityType="AzMedModel.TurnosEstudios" />
+          <AssociationSet Name="FK_TurnosEstudios_Estudios" Association="AzMedModel.FK_TurnosEstudios_Estudios">
+            <End Role="Estudios" EntitySet="Estudios" />
+            <End Role="TurnosEstudios" EntitySet="TurnosEstudios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TurnosEstudios_Pacientes" Association="AzMedModel.FK_TurnosEstudios_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="TurnosEstudios" EntitySet="TurnosEstudios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DetalleSolp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Solped" Type="Int32" />
+          <Property Name="Material" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <NavigationProperty Name="Solped1" Relationship="AzMedModel.FK_DetalleSolp_DetalleSolp" FromRole="DetalleSolp" ToRole="Solped" />
+          <NavigationProperty Name="Material1" Relationship="AzMedModel.FK_DetalleSolp_Material" FromRole="DetalleSolp" ToRole="Material" />
+        </EntityType>
+        <EntityType Name="EstadoSolp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Solped" Relationship="AzMedModel.FK_Solped_EstadoSolp" FromRole="EstadoSolp" ToRole="Solped" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cantidad" Type="Int32" />
+          <NavigationProperty Name="DetalleSolp" Relationship="AzMedModel.FK_DetalleSolp_Material" FromRole="Material" ToRole="DetalleSolp" />
+          <NavigationProperty Name="DetalleOC" Relationship="AzMedModel.FK_DetalleOC_Material" FromRole="Material" ToRole="DetalleOC" />
+        </EntityType>
+        <EntityType Name="Solped">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="DetalleSolp" Relationship="AzMedModel.FK_DetalleSolp_DetalleSolp" FromRole="Solped" ToRole="DetalleSolp" />
+          <NavigationProperty Name="EstadoSolp" Relationship="AzMedModel.FK_Solped_EstadoSolp" FromRole="Solped" ToRole="EstadoSolp" />
+          <NavigationProperty Name="Cotizaciones" Relationship="AzMedModel.FK_Cotizaciones_Cotizaciones" FromRole="Solped" ToRole="Cotizaciones" />
+        </EntityType>
+        <Association Name="FK_DetalleSolp_DetalleSolp">
+          <End Type="AzMedModel.Solped" Role="Solped" Multiplicity="0..1" />
+          <End Type="AzMedModel.DetalleSolp" Role="DetalleSolp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Solped">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleSolp">
+              <PropertyRef Name="Solped" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleSolp_Material">
+          <End Type="AzMedModel.Material" Role="Material" Multiplicity="0..1" />
+          <End Type="AzMedModel.DetalleSolp" Role="DetalleSolp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleSolp">
+              <PropertyRef Name="Material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Solped_EstadoSolp">
+          <End Type="AzMedModel.EstadoSolp" Role="EstadoSolp" Multiplicity="0..1" />
+          <End Type="AzMedModel.Solped" Role="Solped" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSolp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Solped">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DetalleOC">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Material" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Numero_OC" Type="Int32" />
+          <NavigationProperty Name="Material1" Relationship="AzMedModel.FK_DetalleOC_Material" FromRole="DetalleOC" ToRole="Material" />
+          <NavigationProperty Name="OrdenesCompras" Relationship="AzMedModel.FK_DetalleOC_OrdenesCompras" FromRole="DetalleOC" ToRole="OrdenesCompras" />
+        </EntityType>
+        <EntityType Name="OrdenesCompras">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Proveedor" Type="Int32" />
+          <Property Name="Estado" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DetalleOC" Relationship="AzMedModel.FK_DetalleOC_OrdenesCompras" FromRole="OrdenesCompras" ToRole="DetalleOC" />
+          <NavigationProperty Name="EstadoOC" Relationship="AzMedModel.FK_OrdenesCompras_EstadoOC" FromRole="OrdenesCompras" ToRole="EstadoOC" />
+          <NavigationProperty Name="Proveedor1" Relationship="AzMedModel.FK_OrdenesCompras_Proveedor" FromRole="OrdenesCompras" ToRole="Proveedor" />
+        </EntityType>
+        <Association Name="FK_DetalleOC_Material">
+          <End Type="AzMedModel.Material" Role="Material" Multiplicity="0..1" />
+          <End Type="AzMedModel.DetalleOC" Role="DetalleOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleOC">
+              <PropertyRef Name="Material" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleOC_OrdenesCompras">
+          <End Type="AzMedModel.OrdenesCompras" Role="OrdenesCompras" Multiplicity="0..1" />
+          <End Type="AzMedModel.DetalleOC" Role="DetalleOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenesCompras">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DetalleOC">
+              <PropertyRef Name="Numero_OC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesCompras_EstadoOC">
+          <End Type="AzMedModel.EstadoOC" Role="EstadoOC" Multiplicity="0..1" />
+          <End Type="AzMedModel.OrdenesCompras" Role="OrdenesCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoOC">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrdenesCompras">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenesCompras_Proveedor">
+          <End Type="AzMedModel.Proveedor" Role="Proveedor" Multiplicity="0..1" />
+          <End Type="AzMedModel.OrdenesCompras" Role="OrdenesCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrdenesCompras">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cotizaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Precio_Unitario" Type="Int32" />
+          <Property Name="Proveedor" Type="Int32" />
+          <Property Name="Solp" Type="Int32" />
+          <NavigationProperty Name="Solped" Relationship="AzMedModel.FK_Cotizaciones_Cotizaciones" FromRole="Cotizaciones" ToRole="Solped" />
+          <NavigationProperty Name="Proveedor1" Relationship="AzMedModel.FK_Cotizaciones_Proveedor" FromRole="Cotizaciones" ToRole="Proveedor" />
+        </EntityType>
+        <Association Name="FK_Cotizaciones_Cotizaciones">
+          <End Type="AzMedModel.Solped" Role="Solped" Multiplicity="0..1" />
+          <End Type="AzMedModel.Cotizaciones" Role="Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Solped">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cotizaciones">
+              <PropertyRef Name="Solp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizaciones_Proveedor">
+          <End Type="AzMedModel.Proveedor" Role="Proveedor" Multiplicity="0..1" />
+          <End Type="AzMedModel.Cotizaciones" Role="Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cotizaciones">
+              <PropertyRef Name="Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Estudios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TurnosEstudios" Relationship="AzMedModel.FK_TurnosEstudios_Estudios" FromRole="Estudios" ToRole="TurnosEstudios" />
+        </EntityType>
+        <EntityType Name="TurnosEstudios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo_Estudios" Type="Int32" />
+          <Property Name="Paciente" Type="Int32" />
+          <NavigationProperty Name="Estudios" Relationship="AzMedModel.FK_TurnosEstudios_Estudios" FromRole="TurnosEstudios" ToRole="Estudios" />
+          <NavigationProperty Name="Pacientes" Relationship="AzMedModel.FK_TurnosEstudios_Pacientes" FromRole="TurnosEstudios" ToRole="Pacientes" />
+        </EntityType>
+        <Association Name="FK_TurnosEstudios_Estudios">
+          <End Type="AzMedModel.Estudios" Role="Estudios" Multiplicity="0..1" />
+          <End Type="AzMedModel.TurnosEstudios" Role="TurnosEstudios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TurnosEstudios">
+              <PropertyRef Name="Tipo_Estudios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TurnosEstudios_Pacientes">
+          <End Type="AzMedModel.Pacientes" Role="Pacientes" Multiplicity="0..1" />
+          <End Type="AzMedModel.TurnosEstudios" Role="TurnosEstudios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TurnosEstudios">
+              <PropertyRef Name="Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AzMedModelStoreContainer" CdmEntityContainer="AzMedEntities">
+          <EntitySetMapping Name="Especialidad">
+            <EntityTypeMapping TypeName="AzMedModel.Especialidad">
+              <MappingFragment StoreEntitySet="Especialidad">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoOC">
+            <EntityTypeMapping TypeName="AzMedModel.EstadoOC">
+              <MappingFragment StoreEntitySet="EstadoOC">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="AzMedModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modulo">
+            <EntityTypeMapping TypeName="AzMedModel.modulo">
+              <MappingFragment StoreEntitySet="modulo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObraSocial">
+            <EntityTypeMapping TypeName="AzMedModel.ObraSocial">
+              <MappingFragment StoreEntitySet="ObraSocial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cuil" ColumnName="Cuil" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operaciones">
+            <EntityTypeMapping TypeName="AzMedModel.operaciones">
+              <MappingFragment StoreEntitySet="operaciones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="AzMedModel.Pacientes">
+              <MappingFragment StoreEntitySet="Pacientes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="idPlan" ColumnName="idPlan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan">
+            <EntityTypeMapping TypeName="AzMedModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoPlan" ColumnName="TipoPlan" />
+                <ScalarProperty Name="idObraSocial" ColumnName="idObraSocial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesionales">
+            <EntityTypeMapping TypeName="AzMedModel.Profesionales">
+              <MappingFragment StoreEntitySet="Profesionales">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Profesional" ColumnName="Profesional" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="idEspecialidad" ColumnName="idEspecialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="AzMedModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Cuil" ColumnName="Cuil" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol">
+            <EntityTypeMapping TypeName="AzMedModel.rol">
+              <MappingFragment StoreEntitySet="rol">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rol_operacion">
+            <EntityTypeMapping TypeName="AzMedModel.rol_operacion">
+              <MappingFragment StoreEntitySet="rol_operacion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idOperacion" ColumnName="idOperacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AzMedModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turnos">
+            <EntityTypeMapping TypeName="AzMedModel.Turnos">
+              <MappingFragment StoreEntitySet="Turnos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="idProfesional" ColumnName="idProfesional" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="AzMedModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleSolp">
+            <EntityTypeMapping TypeName="AzMedModel.DetalleSolp">
+              <MappingFragment StoreEntitySet="DetalleSolp">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Solped" ColumnName="Solped" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoSolp">
+            <EntityTypeMapping TypeName="AzMedModel.EstadoSolp">
+              <MappingFragment StoreEntitySet="EstadoSolp">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="AzMedModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Solped">
+            <EntityTypeMapping TypeName="AzMedModel.Solped">
+              <MappingFragment StoreEntitySet="Solped">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleOC">
+            <EntityTypeMapping TypeName="AzMedModel.DetalleOC">
+              <MappingFragment StoreEntitySet="DetalleOC">
+                <ScalarProperty Name="Numero_OC" ColumnName="Numero OC" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdenesCompras">
+            <EntityTypeMapping TypeName="AzMedModel.OrdenesCompras">
+              <MappingFragment StoreEntitySet="OrdenesCompras">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cotizaciones">
+            <EntityTypeMapping TypeName="AzMedModel.Cotizaciones">
+              <MappingFragment StoreEntitySet="Cotizaciones">
+                <ScalarProperty Name="Solp" ColumnName="Solp" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudios">
+            <EntityTypeMapping TypeName="AzMedModel.Estudios">
+              <MappingFragment StoreEntitySet="Estudios">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TurnosEstudios">
+            <EntityTypeMapping TypeName="AzMedModel.TurnosEstudios">
+              <MappingFragment StoreEntitySet="TurnosEstudios">
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Tipo_Estudios" ColumnName="Tipo Estudios" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

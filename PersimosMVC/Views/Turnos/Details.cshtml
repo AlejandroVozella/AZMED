@@ -1,0 +1,51 @@
+﻿@model PersimosMVC.Models.Turnos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutClinica.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Turnos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacientes.Paciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pacientes.Paciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profesionales.Profesional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profesionales.Profesional)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
